@@ -1,0 +1,14 @@
+/* when using NavBar fixed Top, must have >> margin-top */
+.container {
+    max-width: 1024px;
+    margin: 0px auto;
+    margin-top: 50px;
+    margin-bottom: 30px;
+}
+
+
+.buyBtn {
+    margin-top: 10px;
+}
+
+
