@@ -1,18 +1,20 @@
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import { Link } from 'react-router-dom';
 
 import {ListGroup, Button} from 'react-bootstrap';
 
 import ItemCount from '../ItemCount/ItemCount';
+import CartContext from '../../contexts/CartContext';
 
-const ItemDetail = ({item, addToCart, cart}) => {
+const ItemDetail = ({item}) => {
+    const cartContext = useContext(CartContext);
     const [stockNow, setStockNow] = useState(item.stock);
 
     const updateStock = (e, quantity) => {
         e.preventDefault();
         if (quantity > 0 && quantity <= stockNow) {
             setStockNow((stockNow) => stockNow - quantity);
-            addToCart({id: item.id, title: item.title, price: item.price, quantity: quantity})
+            cartContext.addItem({id: item.id, title: item.title, price: item.price, quantity: quantity});
         }
     };
 
@@ -23,7 +25,7 @@ const ItemDetail = ({item, addToCart, cart}) => {
                 <ListGroup.Item>{item.description}</ListGroup.Item>
             </ListGroup>
             {stockNow > 0 && <ItemCount stock={stockNow} initial={1} onAdd={updateStock} />}
-            { cart.length ?
+            { cartContext.cart.length ?
                 <Link to="/cart" className="nav-link">
                     <hr /><Button className="m-all-10" variant="primary">CARRITO</Button>
                 </Link> : ''

@@ -1,16 +1,27 @@
-import { Card, Row, ListGroup, Button } from 'react-bootstrap';
+import { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { Card, Row, ListGroup, Button } from 'react-bootstrap';
 
-const Cart = ({cart}) => {
 
-    const cartTotal = cart.reduce((total, item) => total + item.price * item.quantity, 0);
-    const cartItemsCount = cart.length;
+import CartContext from '../../contexts/CartContext';
+
+const Cart = ({cart}) => 
+{
+    const cartContext = useContext(CartContext);
+    const cartTotal = cartContext.cart.reduce((total, item) => total + item.price * item.quantity, 0);
+    const cartItemsCount = cartContext.cart.length;
     
-    const cartItems = cart.map(
+    const handleOnClick = (e, item) => {
+        e.preventDefault();
+        cartContext.removeItem(item);
+    };
+
+    const cartItems = cartContext.cart.map(
         (item, index) => {
             return (
                 <ListGroup.Item key={index}>
                     <strong>{`${item.title}:`}</strong> {`$${item.price} x ${item.quantity}`}
+                    <Button className="m-all-10" variant="outline-danger" onClick={ (e) => handleOnClick(e, item) }>x</Button>
                 </ListGroup.Item>
             )
     });
@@ -28,14 +39,19 @@ const Cart = ({cart}) => {
                         <Card.Footer className="text-muted">
                             TOTAL: ${cartTotal}
                         </Card.Footer>
-                        <Link to="#">
+                        <Link to="/checkout">
                             <Button className="m-all-10" variant="primary">COMPRAR!</Button>
                         </Link>
                     </>
                     :
-                    <Card.Text className="text-muted">
-                        No compraste nada todavía!
-                    </Card.Text>
+                    <>
+                        <Card.Text className="text-muted">
+                            No compraste nada todavía!
+                        </Card.Text>
+                        <Link to="/">
+                            <hr /><Button className="m-all-10" variant="outline-success">VOLVER AL INICIO</Button>
+                        </Link>
+                    </>    
                 }
                 </Card.Body>
             </Card>

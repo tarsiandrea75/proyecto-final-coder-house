@@ -1,4 +1,4 @@
-import {React} from 'react';
+import React from 'react';
 import { Row } from 'react-bootstrap';
 
 import ItemList from '../ItemList/ItemList';

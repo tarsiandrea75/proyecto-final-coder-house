@@ -32,9 +32,9 @@ const RouterApp = () => {
             <Route path="/contact-us">
                 <Contact />
             </Route>
-            <Route path="/cart">
+            {/* <Route path="/cart">
                 <Cart />
-            </Route>
+            </Route> */}
             <Route exact path="/">
                 <ItemListContainer />
             </Route>
