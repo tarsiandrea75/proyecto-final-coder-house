@@ -4,6 +4,7 @@ import { useState } from 'react';
 const CartProvider = ({children}) => {
     const [cart, setCart] = useState([]);
     const [cartLength, setCartLength] = useState(0);
+    const [order, setOrder] = useState({});
 
     const findIndex = (item) => {
         return cart.findIndex(elem => elem.id === item.id);
@@ -36,7 +37,20 @@ const CartProvider = ({children}) => {
         setCart([]);
     }
 
-    return <CartContext.Provider value={{cart, cartLength, addItem, removeItem, isInCart, clear}}>
+    const cartTotal = cart.reduce(
+        (total, item) => {
+            return total + item.price * item.quantity
+        }, 
+        0
+    );
+    
+
+    const createOrder = (id) => {
+        setOrder({ id: id });
+      };
+
+
+    return <CartContext.Provider value={{cart, cartLength, addItem, removeItem, isInCart, clear, order, createOrder, cartTotal}}>
         {children}
     </CartContext.Provider>
 }

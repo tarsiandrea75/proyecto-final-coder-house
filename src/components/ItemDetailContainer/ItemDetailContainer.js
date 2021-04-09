@@ -1,30 +1,34 @@
 import {useEffect, useState} from 'react';
 import { Card, Row } from 'react-bootstrap';
 import {useParams} from 'react-router-dom';
+import { getFirestore } from "../../configs/firebase";
 
 import ItemDetail from '../ItemDetail/ItemDetail';
-import mockedItems from '../../data/mockedItems'
-import {createMockedRequest, filterByField} from '../../helper/Helper';
 
 import MissingItaly from '../../assets/images/missing-italy.png';
 
 const ItemDetailContainer = ({addToCart, cart}) => 
 {
+
     const [item, setItem] = useState({});
     const [itemFound, setItemFound] = useState(false);
     const { itemId } = useParams();
 
-    useEffect(() => {
-        createMockedRequest(2000, mockedItems).then((result) => {
-            const items = filterByField(result, "id", parseInt(itemId));
-            if (items) {
-                setItem(items[0])
-                setItemFound(true);
-            } else {
-                setItemFound(false);
-            }
-        });
-    }, [itemId]);
+    useEffect(
+        () => {
+            const db = getFirestore();
+            const product = db.collection("items").doc(itemId);
+            
+            product.get().then((result) => { 
+                if (result) {
+                    setItem({ id: result.id, ...result.data() })
+                    setItemFound(true);
+                } else {
+                    setItemFound(false);
+                }
+            });
+        }, [itemId]
+    );
 
     return (
         <>
@@ -55,7 +59,7 @@ const ItemDetailContainer = ({addToCart, cart}) =>
             }
       </>
     );
-
   }
+
   export default ItemDetailContainer; 
   

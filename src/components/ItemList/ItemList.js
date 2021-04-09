@@ -1,28 +1,30 @@
 import React, {useState, useEffect } from 'react';
 import { Row } from 'react-bootstrap';
 import { useParams } from 'react-router-dom';
+import { getFirestore } from "../../configs/firebase";
 
 import Item from '../Item/Item';
-import mockedItems from '../../data/mockedItems';
 
 const ItemList = () => 
 {
     const [items, setItems] = useState([]);
     const { categoryId } = useParams();
 
-    useEffect(() => {
-        new Promise((resolve, reject) => {
-            setTimeout(() => {
-                resolve(mockedItems);
-            }, 2000);
-        }).then((result) => { 
-                setItems(categoryId ? result.filter((item) => item.categoryId === parseInt(categoryId)) : result); 
+    useEffect(
+        () => {
+            const db = getFirestore();
+            const collection = db.collection("items");
+            const products = categoryId ? collection.where('categoryId', '==', parseInt(categoryId)) : collection;
+            products.get().then((result) => {
+                setItems(result.docs.map((doc) => ({ id: doc.id, ...doc.data() })));
             });
-        }, [categoryId]);
+        }, 
+        [categoryId]
+    )
     
-        return (
+    return (
         <Row className="mt-20" style={{margin: 'auto'}}>
-            { items.map((item, index) => <Item key={index} item={item} />) }
+            { items.map((item) => <Item key={item.id} item={item} />) }
         </Row>
     );
 
