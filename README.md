@@ -1,70 +1,95 @@
-# Getting Started with Create React App
+# La Tienda del Tano
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+_Es una app de un e-commerce​ de fantasia para poder vender productos variados italianos... con un poco de humor!_
 
-## Available Scripts
+El usuario puede ingresar, navegar por los productos e ir a sus detalles.
+● Desde el detalle se puede ver la descripción, foto y precio e ingresarlo al
+carrito.
+● Una vez que el carrito tenga al menos un producto, se puede visualizar un
+listado compacto de la orden con el precio total.
+● Al ingresar su nombre, apellido, teléfono e e-mail (ingresándolo dos veces para
+corroborar que sea correcto), se activa el botón de ‘realizar compra’.
+● Al clickear ‘realizar compra’ se guarda en la base de datos una orden que
+tenga todos los productos, la fecha y dar feedback del número de orden.
 
-In the project directory, you can run:
+## Comenzando 🚀
 
-### `yarn start`
+Para obtener el codigo fuente, podes descargar este archivo:
+https://github.com/tarsiandrea75/proyecto-final-coder-house/archive/refs/heads/main.zip
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+o con GIT desde tu terminal:
+git clone https://github.com/tarsiandrea75/proyecto-final-coder-house
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+Mira **Deployment** para conocer como desplegar el proyecto.
 
-### `yarn test`
+### Pre-requisitos 📋
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```
+La app fué creada con Create React App (https://github.com/facebook/create-react-app),
+por lo tanto vas a necesitar tener instalado Nodejs (version v14.16.0) y npm.
+Se aconseja de usar la herramienta nvm (Node Version Manager).
 
-### `yarn build`
+```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Instalación 🔧
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+```
+SI NO TENES NODE INSTALADO...
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Istrucciones validas para Linux Ubuntu (sorry!)
+NVM
+1. curl -sL https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.0/install.sh -o install_nvm.sh
 
-### `yarn eject`
+2. bash install_nvm.sh
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+3. export NVM_DIR="$HOME/.nvm"
+  [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  
+  [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+4. source ~/.bash_profile
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+5. command -v nvm
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+NODE & NPM
+1. nvm install --lts
 
-## Learn More
+2. node --version
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Si se quieren otras versiones de Node:
+3. nvm ls-remote
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+4. nvm install v14.16.0
 
-### Code Splitting
+5. nvm use v14.16.0
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+Se habrá instalado también NPM.
 
-### Analyzing the Bundle Size
+6. npm -v
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+YA ESTAS LISTO PARA EL PROYECTO!
+```
+En la directory principal, ejecutar:
+npm install
 
-### Making a Progressive Web App
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+## Despliegue 📦
+```
+Una vez que haya terminado el paso anterior, siempre en la directory principal, ejecutar:
+npm start
 
-### Advanced Configuration
+Abrir esta URL en tu navegador:
+http://localhost:3000
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+## Autores ✒️
 
-### Deployment
+Yo (Andrea Tarsi), el staff de CoderHouse y los compañeros del curso.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+## Expresiones de Gratitud 🎁
 
-### `yarn build` fails to minify
+Gracias al staff de CoderHouse!
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+
