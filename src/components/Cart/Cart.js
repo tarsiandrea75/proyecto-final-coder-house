@@ -1,78 +1,68 @@
 import { useContext } from 'react';
 import { Link } from 'react-router-dom';
-import { Card, Row, ListGroup, Button } from 'react-bootstrap';
-import firebase from "firebase/app";
-import { getFirestore } from "../../configs/firebase";
-import "firebase/firestore";
+import { Table, Card, Row, Button } from 'react-bootstrap';
 
 import CartContext from '../../contexts/CartContext';
 
 const Cart = () => 
 {
-    const db = getFirestore();
     const cartContext = useContext(CartContext);
-    
+
     const handleOnClickRemove = (e, item) => {
         e.preventDefault();
         cartContext.removeItem(item);
     };
-
-    const handleOnClickCheckout = () => {
-        createOrderInDB();
-    };
-
-    function createOrderInDB() {
-        
-        const newOrder = {
-          buyer: { id: 1, nombre: "Cliente Anonimo", email: "cliente_anonimo@gmail.com" },
-          items: cartContext.cart,
-          createOn: firebase.firestore.Timestamp.fromDate(new Date()),
-          total: cartContext.cartTotal,
-        };
     
-        const orders = db.collection("orders");
-    
-        orders.add(newOrder)
-        .then((order) => {
-            cartContext.createOrder(order.id)
-        })
-        .catch((error) => {
-            console.error("Error adding document: ", error);
-         });
-      }
-    
-
     const cartItems = cartContext.cart.map(
         (item, index) => {
             return (
-                <ListGroup.Item key={index}>
-                    <strong>{`${item.title}:`}</strong> {`$${item.price} x ${item.quantity}`}
-                    <Button className="m-all-10" variant="outline-danger" onClick={ (e) => handleOnClickRemove(e, item) }>x</Button>
-                </ListGroup.Item>
+                <tr key={item.id}>
+                    <td>{item.title}</td>
+                    <td>${item.price}</td>
+                    <td>{item.quantity}</td>
+                    <td>${item.quantity * item.price}</td>
+                    <td><Button className="m-all-10" variant="outline-danger" onClick={ (e) => handleOnClickRemove(e, item) }>x</Button></td>
+                </tr>
             )
-    });
+        }
+    );
 
     return (
         <Row className="mt-20 justify-content-center">
             <Card className="m-all-10"  style={{ width: '40rem' }} >
-            <Card.Header>Listado Compras</Card.Header>
+            <Card.Header>TU CARRITO</Card.Header>
                 <Card.Body>
                 { cartContext.cartLength ?
                     <>
-                        <ListGroup>
-                            {cartItems}
-                        </ListGroup>
-                        <Card.Footer className="text-muted">
-                            TOTAL: ${cartContext.cartTotal}
+                        <Table striped bordered hover responsive>
+                            <thead>
+                                <tr>
+                                <th>Nombre</th>
+                                <th>Precio</th>
+                                <th>Cantidad</th>
+                                <th>Sub Totales</th>
+                                <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {cartItems}
+                            </tbody>
+                        </Table>
+                        <Card.Footer className="font-weight-bold">
+                            TOTAL: $ {cartContext.cartTotal}
                         </Card.Footer>
                         <Link to="/checkout">
                             <hr />
-                            <Button className="m-all-10" variant="primary" onClick={ () => handleOnClickCheckout()}>COMPRAR!</Button>
+                            <Button className="m-all-10" variant="primary">IR A LA COMPRA</Button>
+                        </Link>
+                        <Link to="/">
+                            <hr />
+                            <hr /><Button className="m-all-10" variant="outline-success">Seguir Comprando</Button>
                         </Link>
                     </>
                     :
                     <>
-                        <Card.Text className="text-muted">
+                        <Card.Text className="font-weight-bold">
                             No compraste nada todavía!
                         </Card.Text>
                         <Link to="/">

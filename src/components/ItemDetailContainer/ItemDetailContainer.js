@@ -12,6 +12,7 @@ const ItemDetailContainer = ({addToCart, cart}) =>
 
     const [item, setItem] = useState({});
     const [itemFound, setItemFound] = useState(false);
+    const [loading, setLoading] = useState(true);
     const { itemId } = useParams();
 
     useEffect(
@@ -20,7 +21,8 @@ const ItemDetailContainer = ({addToCart, cart}) =>
             const product = db.collection("items").doc(itemId);
             
             product.get().then((result) => { 
-                if (result) {
+                setLoading(false);
+                if (result && result.data()) {
                     setItem({ id: result.id, ...result.data() })
                     setItemFound(true);
                 } else {
@@ -33,7 +35,10 @@ const ItemDetailContainer = ({addToCart, cart}) =>
     return (
         <>
             { 
-                itemFound 
+                loading
+                ?
+                    <div>Buscando...</div>
+                : itemFound 
                 ?
                 <Row className="mt-20 d-flex justify-content-center">
                 

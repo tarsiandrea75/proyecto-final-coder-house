@@ -35,6 +35,7 @@ const CartProvider = ({children}) => {
 
     const clear = () => {
         setCart([]);
+        setCartLength(0);
     }
 
     const cartTotal = cart.reduce(

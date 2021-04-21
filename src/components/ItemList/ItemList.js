@@ -9,13 +9,15 @@ const ItemList = () =>
 {
     const [items, setItems] = useState([]);
     const { categoryId } = useParams();
+    const [loading, setLoading] = useState(true);
 
     useEffect(
         () => {
             const db = getFirestore();
             const collection = db.collection("items");
-            const products = categoryId ? collection.where('categoryId', '==', parseInt(categoryId)) : collection;
+            const products = categoryId ? collection.where('categoryId', '==', parseInt(categoryId)) : collection.orderBy("categoryId");
             products.get().then((result) => {
+                setLoading(false);
                 setItems(result.docs.map((doc) => ({ id: doc.id, ...doc.data() })));
             });
         }, 
@@ -23,9 +25,17 @@ const ItemList = () =>
     )
     
     return (
-        <Row className="mt-20" style={{margin: 'auto'}}>
-            { items.map((item) => <Item key={item.id} item={item} />) }
-        </Row>
+        <>
+            {
+                loading
+                ? 
+                    <div>Cargando...</div>
+                :
+                    <Row className="mt-20" style={{margin: 'auto'}}>
+                        { items.map((item) => <Item key={item.id} item={item} />) }
+                    </Row>
+            }
+        </>
     );
 
 }

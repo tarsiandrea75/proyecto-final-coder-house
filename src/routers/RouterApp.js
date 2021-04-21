@@ -15,6 +15,7 @@ import AboutUs from '../components/AboutUs/AboutUs';
 import ContactUs from '../components/ContactUs/ContactUs';
 import Cart from '../components/Cart/Cart';
 import Checkout from '../components/Checkout/Checkout';
+import Order from '../components/Order/Order';
 
 const RouterApp = () => 
 {
@@ -42,6 +43,9 @@ const RouterApp = () =>
                     </Route>
                     <Route path="/checkout/"> 
                         <Checkout /> 
+                    </Route>
+                    <Route path="/order/:orderId"> 
+                        <Order /> 
                     </Route>
                     <Redirect to="/"/>
                 </Switch> 

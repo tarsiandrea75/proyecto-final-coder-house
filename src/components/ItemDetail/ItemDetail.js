@@ -30,6 +30,10 @@ const ItemDetail = ({item}) => {
                     <hr /><Button className="m-all-10" variant="primary">CARRITO</Button>
                 </Link> : ''
             }
+            <Link to="/">
+                <hr />
+                <hr /><Button className="m-all-10" variant="outline-success">Volver al listado</Button>
+            </Link>
         </>
     );
 }

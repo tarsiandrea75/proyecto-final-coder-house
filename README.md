@@ -2,14 +2,14 @@
 
 _Es una app de un e-commerce​ de fantasia para poder vender productos variados italianos... con un poco de humor!_
 
-El usuario puede ingresar, navegar por los productos e ir a sus detalles.
-● Desde el detalle se puede ver la descripción, foto y precio e ingresarlo al
+- El usuario puede ingresar, navegar por los productos e ir a sus detalles.
+- Desde el detalle se puede ver la descripción, foto y precio e ingresarlo al
 carrito.
-● Una vez que el carrito tenga al menos un producto, se puede visualizar un
+- Una vez que el carrito tenga al menos un producto, se puede visualizar un
 listado compacto de la orden con el precio total.
-● Al ingresar su nombre, apellido, teléfono e e-mail (ingresándolo dos veces para
+- Al ingresar su nombre, apellido, teléfono e e-mail (ingresándolo dos veces para
 corroborar que sea correcto), se activa el botón de ‘realizar compra’.
-● Al clickear ‘realizar compra’ se guarda en la base de datos una orden que
+- Al clickear ‘realizar compra’ se guarda en la base de datos una orden que
 tenga todos los productos, la fecha y dar feedback del número de orden.
 
 ## Comenzando 🚀
