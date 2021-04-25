@@ -13,7 +13,6 @@ const CartWidget = () =>
     const cartItemsCount = cartContext.cartLength;
     
     return (
-        <div className="item">
             <NavLink to="/cart" className="nav-link">
                 {
                     cartItemsCount > 0 && 
@@ -23,8 +22,6 @@ const CartWidget = () =>
                 <img src={CartImage} className="Cart-img" alt="Cart" />
                 
             </NavLink>
-        </div>
-       
     )
 }
 

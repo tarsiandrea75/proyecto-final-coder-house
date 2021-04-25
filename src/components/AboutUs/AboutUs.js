@@ -5,7 +5,7 @@ const AboutUs = () =>
 
     return (
       <Row className="mt-20">
-        <Col sm={12} className="text-start">
+        <Col sm={12} className="text-center mt-5">
             <h2>Somos una asociación a fines de lucro que quiere traer un poco de Italia a tu vida... aun no lo quieras</h2>
         </Col>
       </Row>

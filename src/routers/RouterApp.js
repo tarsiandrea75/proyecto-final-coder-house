@@ -25,7 +25,7 @@ const RouterApp = () =>
         <Router>
             <NavBar />
             <div style={ {backgroundImage: backgroundImage} }>
-                <h1 className="navbar-center" style={{"textAlign": "center"}}>
+                <h1 className="navbar-center text-white my-4" style={{"textAlign": "center"}}>
                     LA TIENDA DEL TANO
                 </h1>  
             </div>

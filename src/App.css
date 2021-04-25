@@ -64,10 +64,29 @@
   border-radius: 4px;
   background: #fff;
   box-shadow: 0 6px 10px rgba(0,0,0,.08), 0 0 6px rgba(0,0,0,.05);
+  width: 16rem;
+  transition: width 0.5s;
 }
 
 .card:hover {
   box-shadow: 0 10px 20px rgba(0,0,0,.12), 0 4px 8px rgba(0,0,0,.06);
+  width: 18rem;
+}
+
+.card .img-container{
+  overflow: hidden;
+  height: 200px;
+  max-width: 100%;
+  transition: height 0.5s;
+}
+
+.card img {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.card:hover .img-container{
+  height: 250px;
 }
 
 .hide {

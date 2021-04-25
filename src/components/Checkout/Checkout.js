@@ -115,7 +115,7 @@ import CartContext from "../../contexts/CartContext";
                                 </Form.Group>
                             </Form.Row>
                             <Form.Row className="mt-20 justify-content-center">
-                                <Form.Group controlId="formBasicEmail">
+                                <Form.Group as={Col} md="4" controlId="formBasicEmail">
                                     <Form.Label>Email</Form.Label>
                                     <Form.Control 
                                         required
@@ -128,7 +128,7 @@ import CartContext from "../../contexts/CartContext";
                                 </Form.Group>
                             </Form.Row>
                             <Form.Row className="mt-20 justify-content-center">
-                                <Form.Group controlId="formBasicEmailDoubleCheck">
+                                <Form.Group as={Col} md="4" controlId="formBasicEmailDoubleCheck">
                                     <Form.Label>Reingresá tu Email</Form.Label>
                                     <Form.Control 
                                         required

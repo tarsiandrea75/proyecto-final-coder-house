@@ -12,6 +12,9 @@ corroborar que sea correcto), se activa el botón de ‘realizar compra’.
 - Al clickear ‘realizar compra’ se guarda en la base de datos una orden que
 tenga todos los productos, la fecha y dar feedback del número de orden.
 
+Se puede ver un pequeño recorrido a traves de la GIF:
+http://localhost:3000/virtual-tour.gif
+
 ## Comenzando 🚀
 
 Para obtener el codigo fuente, podes descargar este archivo:

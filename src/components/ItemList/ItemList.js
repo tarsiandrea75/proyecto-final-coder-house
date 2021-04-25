@@ -31,7 +31,7 @@ const ItemList = () =>
                 ? 
                     <div>Cargando...</div>
                 :
-                    <Row className="mt-20" style={{margin: 'auto'}}>
+                    <Row className="mt-20 justify-content-center " style={{margin: 'auto'}}>
                         { items.map((item) => <Item key={item.id} item={item} />) }
                     </Row>
             }
